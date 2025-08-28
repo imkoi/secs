@@ -16,12 +16,12 @@ Ecs Library for CSharp - Fast, Fluent, Minimalistic
 
 Iteration speed:
 ![img_1.png](img_1.png)
-
-Create entity and add components
+<br />
+Create entity and add components:
 ![img_2.png](img_2.png)
-
-Add component when iterating
+<br />
+Add component when iterating:
 ![img_3.png](img_3.png)
-
+<br />
 Destroy when iterating:
 ![img_4.png](img_4.png)
