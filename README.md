@@ -14,17 +14,17 @@ Ecs Library for CSharp - Fast, Fluent, Minimalistic
 > Secs create and add component performance could be improved with same 
 > strategy that Leo and Morpeh use - pools of components. Current bottleneck is hashmap that map component type to its id
 ---
-Iteration speed:
+### Iteration speed
 ![img_1.png](img_1.png)
 <br />
 ---
-Create entity and add components:
+### Create entity and add components
 ![img_2.png](img_2.png)
 <br />
 ---
-Add component when iterating:
+### Add component when iterating
 ![img_3.png](img_3.png)
 <br />
 ---
-Destroy when iterating:
+### Destroy when iterating
 ![img_4.png](img_4.png)
