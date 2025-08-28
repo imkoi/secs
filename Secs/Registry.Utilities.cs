@@ -26,14 +26,14 @@ namespace Secs
             {
                 var id = componentIds[i];
 
-                minIncludeId = _components[id]._count < minIncludeId 
+                minIncludeId = _components[id]._count < minIncludeId
                     ? id
                     : minIncludeId;
             }
-            
+
             return minIncludeId;
         }
-        
+
         public static unsafe void QuickSort(int* array, int left, int right, int orderSign)
         {
             if (orderSign < 0)
@@ -45,7 +45,7 @@ namespace Secs
                 QuickSortPositive(array, left, right);
             }
         }
-        
+
         private static unsafe void QuickSortNegative(int* array, int left, int right)
         {
             if (left >= right)
@@ -88,7 +88,7 @@ namespace Secs
                 QuickSortNegative(array, i, right);
             }
         }
-        
+
         private static unsafe void QuickSortPositive(int* array, int left, int right)
         {
             if (left >= right)
@@ -120,7 +120,7 @@ namespace Secs
                     j--;
                 }
             }
-            
+
             if (left < j)
             {
                 QuickSortPositive(array, left, j);

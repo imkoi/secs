@@ -6,19 +6,19 @@ namespace Secs
     public partial class Registry
     {
         private static Stack<int[][]> _stack = new Stack<int[][]>();
-        
+
         public EntityIterator Each(Filter filter)
         {
             return new EntityIterator(this, filter);
         }
-        
+
         public unsafe struct EntityIterator
         {
             private readonly int _finalFilterCount;
             private readonly int _includesCount;
             private readonly int[] _entities;
             private readonly int[][] _sparses;
-            
+
             private int _entityIndex;
             public int Current { get; set; }
 
@@ -27,10 +27,10 @@ namespace Secs
                 Current = -1;
 
                 var registryComponents = registry._components;
-                
+
                 var include = filter.Include;
                 var exclude = filter.Exclude;
-                var includesCount = include?.Length + 0 ??  0;
+                var includesCount = include?.Length + 0 ?? 0;
                 var componentIdsCount = includesCount + (exclude?.Length ?? 0);
                 var componentIds = stackalloc int[componentIdsCount];
 
@@ -38,14 +38,14 @@ namespace Secs
                 {
                     registry.FillComponentIds(include, componentIds);
                 }
-            
+
                 QuickSort(componentIds, 0, includesCount - 1, 1);
                 if (exclude != null)
                 {
                     registry.FillComponentIds(exclude, componentIds, includesCount);
                     QuickSort(componentIds, includesCount, componentIdsCount - 1, -1);
                 }
-            
+
                 var compactIncludeId = registry.FindCompactIncludeId(componentIds, includesCount);
 
                 var components = registryComponents[compactIncludeId];
@@ -53,28 +53,28 @@ namespace Secs
                 var finalFilterCount = componentIdsCount - 1;
 
                 var sparses = _stack.Count > 0 ? _stack.Pop() : new int[64][];
-            
+
                 var x = 0;
-            
+
                 for (var i = 0; i < componentIdsCount; ++i)
                 {
                     if (componentIds[i] == compactIncludeId)
                     {
                         continue;
                     }
-                
+
                     sparses[x] = registryComponents[componentIds[i]]._sparse;
-                
+
                     x++;
                 }
-                
+
                 _entities = entities;
                 _sparses = sparses;
                 _entityIndex = components._count - 1;
                 _includesCount = includesCount - 1; // -1 ???
                 _finalFilterCount = finalFilterCount;
             }
-            
+
             public EntityIterator GetEnumerator() => this;
 
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -88,25 +88,25 @@ namespace Secs
                 var finalFilterCount = _finalFilterCount;
                 var entities = _entities;
                 var componentIndex = 0;
-            
+
                 MoveNextEntity:
                 if (entityIndex >= 0)
                 {
                     entity = entities[entityIndex];
                     match = true;
-                
+
                     MoveNextComponent:
                     if (match && componentIndex < finalFilterCount)
                     {
                         match = sparses[componentIndex][entity] > 0 == componentIndex < includesCount;
-                    
+
                         componentIndex++;
                         goto MoveNextComponent;
                     }
-                    
+
                     componentIndex = 0;
                     entityIndex--;
-                    
+
                     if (!match)
                     {
                         goto MoveNextEntity;
@@ -122,7 +122,7 @@ namespace Secs
                 }
 
                 Dispose();
-                
+
                 return false;
             }
 
@@ -139,7 +139,7 @@ namespace Secs
                         break;
                     }
                 }
-                
+
                 _stack.Push(_sparses);
             }
         }
