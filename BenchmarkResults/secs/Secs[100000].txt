@@ -1,0 +1,31 @@
+Secs[100000]:
+TOTAL: 79.86 MB
+GC: 0.66 MB
+CreateEntitiesWith1DenseComponents: 2.61 milliseconds
+CreateEntitiesWith1SparseComponents: 1.50 milliseconds
+CreateEntitiesWith2DenseComponents: 5.53 milliseconds
+CreateEntitiesWith2SparseComponents: 2.25 milliseconds
+CreateEntitiesWith3DenseComponents: 7.93 milliseconds
+CreateEntitiesWith3SparseComponents: 3.94 milliseconds
+
+DestroyEntitiesWith1DenseComponents: 1.08 milliseconds
+DestroyEntitiesWith1SparseComponents: 0.36 milliseconds
+DestroyEntitiesWith2DenseComponents: 0.76 milliseconds
+DestroyEntitiesWith2SparseComponents: 0.26 milliseconds
+DestroyEntitiesWith3DenseComponents: 0.96 milliseconds
+DestroyEntitiesWith3SparseComponents: 0.21 milliseconds
+
+AddNewComponentWith1DenseComponents: 2.75 milliseconds
+AddNewComponentWith1SparseComponents: 0.78 milliseconds
+AddNewComponentWith2DenseComponents: 1.88 milliseconds
+AddNewComponentWith2SparseComponents: 0.29 milliseconds
+AddNewComponentWith3DenseComponents: 2.10 milliseconds
+AddNewComponentWith3SparseComponents: 0.20 milliseconds
+
+IterateWith1DenseComponents: 0.07 milliseconds
+IterateWith1SparseComponents: 0.04 milliseconds
+IterateWith2DenseComponents: 0.11 milliseconds
+IterateWith2SparseComponents: 0.04 milliseconds
+IterateWith3DenseComponents: 0.18 milliseconds
+IterateWith3SparseComponents: 0.05 milliseconds
+

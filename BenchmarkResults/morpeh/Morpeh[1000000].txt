@@ -1,0 +1,31 @@
+Morpeh[1000000]:
+TOTAL: 79.51 MB
+GC: 0.67 MB
+CreateEntitiesWith1DenseComponents: 56.94 milliseconds
+CreateEntitiesWith1SparseComponents: 58.36 milliseconds
+CreateEntitiesWith2DenseComponents: 92.66 milliseconds
+CreateEntitiesWith2SparseComponents: 81.11 milliseconds
+CreateEntitiesWith3DenseComponents: 95.90 milliseconds
+CreateEntitiesWith3SparseComponents: 82.21 milliseconds
+
+DestroyEntitiesWith1DenseComponents: 14.11 milliseconds
+DestroyEntitiesWith1SparseComponents: 0.00 milliseconds
+DestroyEntitiesWith2DenseComponents: 15.09 milliseconds
+DestroyEntitiesWith2SparseComponents: 7.07 milliseconds
+DestroyEntitiesWith3DenseComponents: 18.88 milliseconds
+DestroyEntitiesWith3SparseComponents: 8.92 milliseconds
+
+AddNewComponentWith1DenseComponents: 19.21 milliseconds
+AddNewComponentWith1SparseComponents: 0.28 milliseconds
+AddNewComponentWith2DenseComponents: 18.86 milliseconds
+AddNewComponentWith2SparseComponents: 0.13 milliseconds
+AddNewComponentWith3DenseComponents: 23.35 milliseconds
+AddNewComponentWith3SparseComponents: 0.07 milliseconds
+
+IterateWith1DenseComponents: 1.74 milliseconds
+IterateWith1SparseComponents: 1.01 milliseconds
+IterateWith2DenseComponents: 3.38 milliseconds
+IterateWith2SparseComponents: 1.11 milliseconds
+IterateWith3DenseComponents: 4.94 milliseconds
+IterateWith3SparseComponents: 1.32 milliseconds
+

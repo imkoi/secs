@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Collections.Pooled</id>
+    <version>2.0.0-preview.27</version>
+    <authors>Joel Mueller</authors>
+    <owners>Joel Mueller</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="file">LICENSE.txt</license>
+    <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
+    <projectUrl>https://github.com/jtmueller/Collections.Pooled</projectUrl>
+    <description>Includes PooledList, PooledDictionary, PooledSet, PooledStack, PooledQueue, and PooledObservableCollection: based on the corresponding collections in System.Collections.Generic, using ArrayPool internally to reduce allocations, and with some API changes that allow for better compatibility with Span.</description>
+    <releaseNotes>Now targeting .NET Standard 2.0 and 2.1, adding support for Index, Range types in .NET Standard 2.1.
+      Because this release drops support for .NET Core 2.1 in order to support .NET Standard, the major version number has been incremented to prevent auto-updating for projects targeting .NET Core 2.x.</releaseNotes>
+    <copyright>Copyright (c) 2018, 2019 Joel Mueller, Dzmitry Lahoda, based on code from the .NET Foundation</copyright>
+    <tags>List ArrayPool Span Dictionary Stack Set HashSet ObservableCollection</tags>
+    <repository type="Git" url="https://github.com/jtmueller/Collections.Pooled.git" />
+    <dependencies>
+      <group targetFramework=".NETFramework4.6.1">
+        <dependency id="System.Buffers" version="4.5.0" exclude="Build,Analyzers" />
+        <dependency id="System.Memory" version="4.5.3" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETCoreApp3.0" />
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="System.Buffers" version="4.5.0" exclude="Build,Analyzers" />
+        <dependency id="System.Memory" version="4.5.3" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard2.1" />
+    </dependencies>
+  </metadata>
+</package>
