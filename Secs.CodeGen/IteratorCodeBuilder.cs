@@ -11,7 +11,7 @@ public class IteratorCodeBuilder
 
         var codeWriter = new CodeWriter(4, "System.Runtime.CompilerServices");
 
-        using (codeWriter.Scope("namespace Ecs"))
+        using (codeWriter.Scope("namespace Secs"))
         {
             using (codeWriter.Scope("public partial class Registry"))
             {
@@ -178,7 +178,7 @@ public class IteratorCodeBuilder
                             
                             codeWriter.WriteLine("_entities = entities;");
                             codeWriter.WriteLine("_sparses = sparses;");
-                            codeWriter.WriteLine("_entityIndex = components._count - 1;");
+                            codeWriter.WriteLine("_entityIndex = hasAllQueryComponents ? components._count - 1 : -1;");
                             codeWriter.WriteLine("_includesCount = includesCount - 1;");
                             codeWriter.WriteLine("_finalFilterCount = finalFilterCount;");
                             

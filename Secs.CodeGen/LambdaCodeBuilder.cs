@@ -12,7 +12,7 @@ public class LambdaCodeBuilder
 
         var codeWriter = new CodeWriter(4, "System", "System.Linq");
 
-        using (codeWriter.Scope("namespace Ecs"))
+        using (codeWriter.Scope("namespace Secs"))
         {
             using (codeWriter.Scope("public partial class Registry"))
             {

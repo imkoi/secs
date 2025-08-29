@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using Unity.IL2CPP.CompilerServices;
 
 namespace Secs
@@ -10,12 +9,12 @@ namespace Secs
     [Il2CppSetOption(Option.DivideByZeroChecks, false)]
     public partial class Registry
     {
-        private long[] _entityInfos = new long[4096];
+        internal long[] _entityInfos = new long[4096];
         internal Queue<int> _destroyedEntities = new Queue<int>();
         private int _lastEntityId;
         
         private TypeIdProvider _componentIds = new TypeIdProvider(256);
-        private Components[] _components = new Components[32];
+        internal ComponentsRegistry[] _components = new ComponentsRegistry[32];
         private int _componentCount;
 
         public int CreateEntity()
@@ -59,17 +58,29 @@ namespace Secs
             _destroyedEntities.Enqueue(entity);
         }
 
-        public unsafe ref T AddComponent<T>(int entityId, T component)
-            where T : struct
+        public Components<T> GetComponents<T>() where T : struct
         {
-            var componentType = component.GetType();
+            var componentType = typeof(T);
             
             if(!_componentIds.TryGetValue(componentType, out var id))
             {
                 RegisterComponent<T>(componentType, out id);
             }
 
-            ref var components = ref _components[id];
+            return new Components<T>(this, id);
+        }
+
+        public unsafe ref T AddComponent<T>(int entityId, T component)
+            where T : struct
+        {
+            var componentType = component.GetType();
+            
+            if(!_componentIds.TryGetValue(componentType, out var componentId))
+            {
+                RegisterComponent<T>(componentType, out componentId);
+            }
+
+            ref var components = ref _components[componentId];
 
             var denseIndex = components._count;
 
@@ -101,7 +112,7 @@ namespace Secs
             var right = (info >> bits) & mask;
             var left = (info >> (2 * bits)) & mask;
 
-            var idU = (long)id;
+            var idU = (long)componentId;
             right = idU > right ? idU : right;
             left = idU < left ? idU : left;
 
@@ -129,13 +140,6 @@ namespace Secs
             return ref components.GetDense<T>()[components._sparse[entity]];
         }
 
-        public Group GetGroup(Type[] include = null, Type[] exclude = null)
-        {
-            throw new NotImplementedException();
-            
-            return default;
-        }
-
         private unsafe void RegisterComponent<T>(Type componentType, out int id) where T : struct
         {
             _componentIds.TryAdd(componentType, out id);
@@ -149,7 +153,7 @@ namespace Secs
                 
             var array = new T[32];
                 
-            var newComponents = new Components
+            var newComponents = new ComponentsRegistry
             {
                 _sparse = new int[_lastEntityId],
                 _entities = new int[32],
@@ -165,18 +169,18 @@ namespace Secs
             _components[id] = newComponents;
         }
         
-        private unsafe void ResizeComponents<T>(ref Components components, ref T[] concreteComponents) where T : struct
+        internal unsafe void ResizeComponents<T>(ref ComponentsRegistry componentsRegistry, ref T[] concreteComponents) where T : struct
         {
-            var newDenseSize = components._count * 2;
+            var newDenseSize = componentsRegistry._count * 2;
             
-            Array.Resize(ref components._entities, newDenseSize);
+            Array.Resize(ref componentsRegistry._entities, newDenseSize);
             Array.Resize(ref concreteComponents, newDenseSize);
                 
-            components._components = concreteComponents;
+            componentsRegistry._components = concreteComponents;
 
             fixed (T* arrayPtr = concreteComponents)
             {
-                components._componentsPtr = arrayPtr;
+                componentsRegistry._componentsPtr = arrayPtr;
             }
         }
         
@@ -238,7 +242,7 @@ namespace Secs
             return 1;
         }
 
-        private void MoveEntityToPool(int entity)
+        internal void MoveEntityToPool(int entity)
         {
             const int bits = 20;
             const long mask = (1L << bits) - 1;
@@ -251,7 +255,7 @@ namespace Secs
             _destroyedEntities.Enqueue(entity);
         }
         
-        private unsafe struct Components
+        internal unsafe struct ComponentsRegistry
         {
             internal int[] _sparse;
             internal int[] _entities;

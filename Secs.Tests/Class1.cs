@@ -12,17 +12,17 @@ public class AllTests
         {
             var player = reg.CreateEntity();
 
-            reg.AddComponent(player, new Position());
-            reg.AddComponent(player, new Other());
+            //reg.AddComponent(player, new Position());
+            //reg.AddComponent(player, new Other());
 
             if (i % 2 == 0)
             {
-                reg.AddComponent(player, new Velocity());
+                //reg.AddComponent(player, new Velocity());
             }
             
             if (i % 4 == 0)
             {
-                reg.AddComponent(player, new Player());
+                //reg.AddComponent(player, new Player());
             }
         }
         
@@ -42,6 +42,11 @@ public class AllTests
         // {
         //     Console.WriteLine($"{entityId}: {refPlayer}");
         // }
+
+        foreach (var refPlayer in reg.Each<Player>())
+        {
+            refPlayer.Value.health = 100;
+        }
         
         foreach (var (entityId, refPlayer, refPosition) in reg.EachWithEntity<Player, Position>())
         {
@@ -98,7 +103,7 @@ public class AllTests
     
     public struct Player
     {
-            
+        public int health;
     }
 
     public struct Velocity

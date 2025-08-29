@@ -1,6 +1,6 @@
 ﻿using Secs.CodeGen;
 
-var basePath = "/Users/artemsv/Projects/koi-protocol/Ecs/Ecs";
+var basePath = "/Users/artemsv/Projects/secs/Secs/";
 
 var code = LambdaCodeBuilder.BuildCode(false, false, 8, out var name);
 //File.WriteAllText(Path.Combine(basePath, name).Replace("\\", "/"), code);
