@@ -1,31 +1,31 @@
 Secs[1000000]:
-TOTAL: 79.86 MB
-GC: 0.66 MB
-CreateEntitiesWith1DenseComponents: 24.66 milliseconds
-CreateEntitiesWith1SparseComponents: 13.95 milliseconds
-CreateEntitiesWith2DenseComponents: 51.52 milliseconds
-CreateEntitiesWith2SparseComponents: 21.22 milliseconds
-CreateEntitiesWith3DenseComponents: 70.41 milliseconds
-CreateEntitiesWith3SparseComponents: 25.96 milliseconds
+TOTAL: 79.48 MB
+GC: 0.67 MB
+CreateEntitiesWith1DenseComponents: 8.16 milliseconds
+CreateEntitiesWith1SparseComponents: 5.58 milliseconds
+CreateEntitiesWith2DenseComponents: 14.78 milliseconds
+CreateEntitiesWith2SparseComponents: 7.81 milliseconds
+CreateEntitiesWith3DenseComponents: 20.71 milliseconds
+CreateEntitiesWith3SparseComponents: 9.05 milliseconds
 
-DestroyEntitiesWith1DenseComponents: 6.56 milliseconds
-DestroyEntitiesWith1SparseComponents: 3.32 milliseconds
-DestroyEntitiesWith2DenseComponents: 8.16 milliseconds
-DestroyEntitiesWith2SparseComponents: 3.24 milliseconds
-DestroyEntitiesWith3DenseComponents: 10.28 milliseconds
-DestroyEntitiesWith3SparseComponents: 2.42 milliseconds
+DestroyEntitiesWith1DenseComponents: 5.90 milliseconds
+DestroyEntitiesWith1SparseComponents: 3.00 milliseconds
+DestroyEntitiesWith2DenseComponents: 7.56 milliseconds
+DestroyEntitiesWith2SparseComponents: 2.69 milliseconds
+DestroyEntitiesWith3DenseComponents: 10.01 milliseconds
+DestroyEntitiesWith3SparseComponents: 2.65 milliseconds
 
-AddNewComponentWith1DenseComponents: 27.35 milliseconds
-AddNewComponentWith1SparseComponents: 7.91 milliseconds
-AddNewComponentWith2DenseComponents: 19.35 milliseconds
-AddNewComponentWith2SparseComponents: 3.40 milliseconds
-AddNewComponentWith3DenseComponents: 20.91 milliseconds
-AddNewComponentWith3SparseComponents: 2.58 milliseconds
+AddNewComponentWith1DenseComponents: 7.33 milliseconds
+AddNewComponentWith1SparseComponents: 2.87 milliseconds
+AddNewComponentWith2DenseComponents: 8.39 milliseconds
+AddNewComponentWith2SparseComponents: 2.26 milliseconds
+AddNewComponentWith3DenseComponents: 7.97 milliseconds
+AddNewComponentWith3SparseComponents: 2.12 milliseconds
 
-IterateWith1DenseComponents: 1.14 milliseconds
-IterateWith1SparseComponents: 0.41 milliseconds
-IterateWith2DenseComponents: 1.52 milliseconds
-IterateWith2SparseComponents: 0.65 milliseconds
-IterateWith3DenseComponents: 2.33 milliseconds
+IterateWith1DenseComponents: 0.85 milliseconds
+IterateWith1SparseComponents: 0.40 milliseconds
+IterateWith2DenseComponents: 1.41 milliseconds
+IterateWith2SparseComponents: 0.44 milliseconds
+IterateWith3DenseComponents: 1.84 milliseconds
 IterateWith3SparseComponents: 0.53 milliseconds
 
