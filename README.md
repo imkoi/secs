@@ -10,10 +10,6 @@ Ecs Library for CSharp - Fast, Fluent, Minimalistic
 > Arch excluded from benchmark because its crashing on high amount
 > of entities
 
-> [!NOTE]
-> Secs create and add component performance could be improved with same 
-> strategy that Leo and Morpeh use - pools of components. Current bottleneck is hashmap that map component type to its id
-
 ### Iteration speed - lower is better
 
 ---
