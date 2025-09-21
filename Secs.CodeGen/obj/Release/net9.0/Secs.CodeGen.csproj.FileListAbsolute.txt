@@ -1,0 +1,15 @@
+/Users/artemsv/Projects/secs/Secs.CodeGen/bin/Release/net9.0/Secs.CodeGen
+/Users/artemsv/Projects/secs/Secs.CodeGen/bin/Release/net9.0/Secs.CodeGen.deps.json
+/Users/artemsv/Projects/secs/Secs.CodeGen/bin/Release/net9.0/Secs.CodeGen.runtimeconfig.json
+/Users/artemsv/Projects/secs/Secs.CodeGen/bin/Release/net9.0/Secs.CodeGen.dll
+/Users/artemsv/Projects/secs/Secs.CodeGen/bin/Release/net9.0/Secs.CodeGen.pdb
+/Users/artemsv/Projects/secs/Secs.CodeGen/obj/Release/net9.0/Secs.CodeGen.GeneratedMSBuildEditorConfig.editorconfig
+/Users/artemsv/Projects/secs/Secs.CodeGen/obj/Release/net9.0/Secs.CodeGen.AssemblyInfoInputs.cache
+/Users/artemsv/Projects/secs/Secs.CodeGen/obj/Release/net9.0/Secs.CodeGen.AssemblyInfo.cs
+/Users/artemsv/Projects/secs/Secs.CodeGen/obj/Release/net9.0/Secs.CodeGen.csproj.CoreCompileInputs.cache
+/Users/artemsv/Projects/secs/Secs.CodeGen/obj/Release/net9.0/Secs.CodeGen.sourcelink.json
+/Users/artemsv/Projects/secs/Secs.CodeGen/obj/Release/net9.0/Secs.CodeGen.dll
+/Users/artemsv/Projects/secs/Secs.CodeGen/obj/Release/net9.0/refint/Secs.CodeGen.dll
+/Users/artemsv/Projects/secs/Secs.CodeGen/obj/Release/net9.0/Secs.CodeGen.pdb
+/Users/artemsv/Projects/secs/Secs.CodeGen/obj/Release/net9.0/Secs.CodeGen.genruntimeconfig.cache
+/Users/artemsv/Projects/secs/Secs.CodeGen/obj/Release/net9.0/ref/Secs.CodeGen.dll

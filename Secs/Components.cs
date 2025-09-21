@@ -61,7 +61,7 @@ namespace Secs
             return ref concreteComponents[denseIndex];
         }
         
-        private unsafe int RemoveComponent(int entity)
+        public unsafe int RemoveComponent(int entity)
         {
             var componentId = _id;
             ref var components = ref _registry._components[componentId];

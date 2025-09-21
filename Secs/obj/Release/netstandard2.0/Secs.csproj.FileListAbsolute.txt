@@ -1,0 +1,11 @@
+/Users/artemsv/Projects/secs/Secs/bin/Release/netstandard2.0/Secs.deps.json
+/Users/artemsv/Projects/secs/Secs/bin/Release/netstandard2.0/Secs.dll
+/Users/artemsv/Projects/secs/Secs/bin/Release/netstandard2.0/Secs.pdb
+/Users/artemsv/Projects/secs/Secs/obj/Release/netstandard2.0/Secs.csproj.AssemblyReference.cache
+/Users/artemsv/Projects/secs/Secs/obj/Release/netstandard2.0/Secs.GeneratedMSBuildEditorConfig.editorconfig
+/Users/artemsv/Projects/secs/Secs/obj/Release/netstandard2.0/Secs.AssemblyInfoInputs.cache
+/Users/artemsv/Projects/secs/Secs/obj/Release/netstandard2.0/Secs.AssemblyInfo.cs
+/Users/artemsv/Projects/secs/Secs/obj/Release/netstandard2.0/Secs.csproj.CoreCompileInputs.cache
+/Users/artemsv/Projects/secs/Secs/obj/Release/netstandard2.0/Secs.sourcelink.json
+/Users/artemsv/Projects/secs/Secs/obj/Release/netstandard2.0/Secs.dll
+/Users/artemsv/Projects/secs/Secs/obj/Release/netstandard2.0/Secs.pdb

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Diagnostics;
-using Ecs;
+using Secs;
 
 namespace DefaultNamespace
 {
@@ -46,12 +46,13 @@ namespace DefaultNamespace
             stopwatch.Restart();
             
             var world = new Registry();
+            var localComponents = world.GetComponents<Local>();
             
             for (int i = 0; i < entitiesCount; i++)
             {
                 var entity = world.CreateEntity();
 
-                world.AddComponent(entity, new Local());
+                localComponents.AddComponent(entity, new Local());
             }
             
             stopwatch.Stop();
@@ -63,6 +64,7 @@ namespace DefaultNamespace
             stopwatch.Restart();
             
             var world = new Registry();
+            var localComponents = world.GetComponents<Local>();
 
             for (int i = 0; i < entitiesCount; i++)
             {
@@ -70,7 +72,7 @@ namespace DefaultNamespace
 
                 if (i % 2 == 0)
                 {
-                    world.AddComponent(entity, new Local());
+                    localComponents.AddComponent(entity, new Local());
                 }
             }
             
@@ -83,13 +85,15 @@ namespace DefaultNamespace
             stopwatch.Restart();
             
             var world = new Registry();
+            var localComponents = world.GetComponents<Local>();
+            var remoteComponents = world.GetComponents<Remote>();
 
             for (int i = 0; i < entitiesCount; i++)
             {
                 var entity = world.CreateEntity();
 
-                world.AddComponent(entity, new Local());
-                world.AddComponent(entity, new Remote());
+                localComponents.AddComponent(entity, new Local());
+                remoteComponents.AddComponent(entity, new Remote());
             }
             
             stopwatch.Stop();
@@ -101,6 +105,8 @@ namespace DefaultNamespace
             stopwatch.Restart();
             
             var world = new Registry();
+            var localComponents = world.GetComponents<Local>();
+            var remoteComponents = world.GetComponents<Remote>();
 
             for (int i = 0; i < entitiesCount; i++)
             {
@@ -108,12 +114,12 @@ namespace DefaultNamespace
 
                 if (i % 2 == 0)
                 {
-                    world.AddComponent(entity, new Local());
+                    localComponents.AddComponent(entity, new Local());
                 }
 
                 if (i % 4 == 0)
                 {
-                    world.AddComponent(entity, new Remote());
+                    remoteComponents.AddComponent(entity, new Remote());
                 }
             }
             
@@ -126,14 +132,17 @@ namespace DefaultNamespace
             stopwatch.Restart();
             
             var world = new Registry();
+            var localComponents = world.GetComponents<Local>();
+            var remoteComponents = world.GetComponents<Remote>();
+            var healthComponents = world.GetComponents<Health>();
             
             for (int i = 0; i < entitiesCount; i++)
             {
                 var entity = world.CreateEntity();
 
-                world.AddComponent(entity, new Local());
-                world.AddComponent(entity, new Remote());
-                world.AddComponent(entity, new Health());
+                localComponents.AddComponent(entity, new Local());
+                remoteComponents.AddComponent(entity, new Remote());
+                healthComponents.AddComponent(entity, new Health());
             }
             
             stopwatch.Stop();
@@ -145,6 +154,9 @@ namespace DefaultNamespace
             stopwatch.Restart();
             
             var world = new Registry();
+            var localComponents = world.GetComponents<Local>();
+            var remoteComponents = world.GetComponents<Remote>();
+            var healthComponents = world.GetComponents<Health>();
 
             for (int i = 0; i < entitiesCount; i++)
             {
@@ -152,17 +164,17 @@ namespace DefaultNamespace
 
                 if (i % 2 == 0)
                 {
-                    world.AddComponent(entity, new Local());
+                    localComponents.AddComponent(entity, new Local());
                 }
 
                 if (i % 4 == 0)
                 {
-                    world.AddComponent(entity, new Remote());
+                    remoteComponents.AddComponent(entity, new Remote());
                 }
 
                 if (i % 8 == 0)
                 {
-                    world.AddComponent(entity, new Health());
+                    healthComponents.AddComponent(entity, new Health());
                 }
             }
             
@@ -173,12 +185,13 @@ namespace DefaultNamespace
         public static void DestroyEntitiesWith1DenseComponents(int entitiesCount, Stopwatch stopwatch, ref BenchmarkResult result)
         {
             var world = new Registry();
+            var localComponents = world.GetComponents<Local>();
 
             for (int i = 0; i < entitiesCount; i++)
             {
                 var entity = world.CreateEntity();
 
-                world.AddComponent(entity, new Local());
+                localComponents.AddComponent(entity, new Local());
             }
 
             stopwatch.Restart();
@@ -195,6 +208,7 @@ namespace DefaultNamespace
         public static void DestroyEntitiesWith1SparseComponents(int entitiesCount, Stopwatch stopwatch, ref BenchmarkResult result)
         {
             var world = new Registry();
+            var localComponents = world.GetComponents<Local>();
 
             for (int i = 0; i < entitiesCount; i++)
             {
@@ -202,7 +216,7 @@ namespace DefaultNamespace
 
                 if (i % 2 == 0)
                 {
-                    world.AddComponent(entity, new Local());
+                    localComponents.AddComponent(entity, new Local());
                 }
             }
 
@@ -220,13 +234,15 @@ namespace DefaultNamespace
         public static void DestroyEntitiesWith2DenseComponents(int entitiesCount, Stopwatch stopwatch, ref BenchmarkResult result)
         {
             var world = new Registry();
+            var localComponents = world.GetComponents<Local>();
+            var remoteComponents = world.GetComponents<Remote>();
  
             for (int i = 0; i < entitiesCount; i++)
             {
                 var entity = world.CreateEntity();
 
-                world.AddComponent(entity, new Local());
-                world.AddComponent(entity, new Remote());
+                localComponents.AddComponent(entity, new Local());
+                remoteComponents.AddComponent(entity, new Remote());
             }
 
             stopwatch.Restart();
@@ -243,6 +259,8 @@ namespace DefaultNamespace
         public static void DestroyEntitiesWith2SparseComponents(int entitiesCount, Stopwatch stopwatch, ref BenchmarkResult result)
         {
             var world = new Registry();
+            var localComponents = world.GetComponents<Local>();
+            var remoteComponents = world.GetComponents<Remote>();
 
             for (int i = 0; i < entitiesCount; i++)
             {
@@ -250,12 +268,12 @@ namespace DefaultNamespace
 
                 if (i % 2 == 0)
                 {
-                    world.AddComponent(entity, new Local());
+                    localComponents.AddComponent(entity, new Local());
                 }
 
                 if (i % 4 == 0)
                 {
-                    world.AddComponent(entity, new Remote());
+                    remoteComponents.AddComponent(entity, new Remote());
                 }
             }
 
@@ -273,14 +291,17 @@ namespace DefaultNamespace
         public static void DestroyEntitiesWith3DenseComponents(int entitiesCount, Stopwatch stopwatch, ref BenchmarkResult result)
         {
             var world = new Registry();
+            var localComponents = world.GetComponents<Local>();
+            var remoteComponents = world.GetComponents<Remote>();
+            var healthComponents = world.GetComponents<Health>();
 
             for (int i = 0; i < entitiesCount; i++)
             {
                 var entity = world.CreateEntity();
 
-                world.AddComponent(entity, new Local());
-                world.AddComponent(entity, new Remote());
-                world.AddComponent(entity, new Health());
+                localComponents.AddComponent(entity, new Local());
+                remoteComponents.AddComponent(entity, new Remote());
+                healthComponents.AddComponent(entity, new Health());
             }
 
             stopwatch.Restart();
@@ -297,6 +318,9 @@ namespace DefaultNamespace
         public static void DestroyEntitiesWith3SparseComponents(int entitiesCount, Stopwatch stopwatch, ref BenchmarkResult result)
         {
             var world = new Registry();
+            var localComponents = world.GetComponents<Local>();
+            var remoteComponents = world.GetComponents<Remote>();
+            var healthComponents = world.GetComponents<Health>();
 
             for (var i = 0; i < entitiesCount; i++)
             {
@@ -304,17 +328,17 @@ namespace DefaultNamespace
 
                 if (i % 2 == 0)
                 {
-                    world.AddComponent(entity, new Local());
+                    localComponents.AddComponent(entity, new Local());
                 }
 
                 if (i % 4 == 0)
                 {
-                    world.AddComponent(entity, new Remote());
+                    remoteComponents.AddComponent(entity, new Remote());
                 }
 
                 if (i % 8 == 0)
                 {
-                    world.AddComponent(entity, new Health());
+                    healthComponents.AddComponent(entity, new Health());
                 }
             }
             
@@ -332,19 +356,25 @@ namespace DefaultNamespace
         public static void AddNewComponentWith1DenseComponents(int entitiesCount, Stopwatch stopwatch, ref BenchmarkResult result)
         {
             var world = new Registry();
+            var localComponents = world.GetComponents<Local>();
+            var remoteComponents = world.GetComponents<Remote>();
 
             for (int i = 0; i < entitiesCount; i++)
             {
                 var entity = world.CreateEntity();
 
-                world.AddComponent(entity, new Local());
+                localComponents.AddComponent(entity, new Local());
             }
 
             stopwatch.Restart();
 
             world.EachWithEntity((Registry registry, int entity, ref Local local) =>
             {
-                registry.AddComponent(entity, new Remote());
+                // fast, but with closure, could be moved to static / preallocated context
+                remoteComponents.AddComponent(entity, new Remote());
+                
+                // slow way
+                //registry.AddComponent(entity, new Remote());
             });
             
             stopwatch.Stop();
@@ -354,6 +384,8 @@ namespace DefaultNamespace
         public static void AddNewComponentWith1SparseComponents(int entitiesCount, Stopwatch stopwatch, ref BenchmarkResult result)
         {
             var world = new Registry();
+            var localComponents = world.GetComponents<Local>();
+            var remoteComponents = world.GetComponents<Remote>();
 
             for (int i = 0; i < entitiesCount; i++)
             {
@@ -361,7 +393,7 @@ namespace DefaultNamespace
 
                 if (i % 2 == 0)
                 {
-                    world.AddComponent(entity, new Local());
+                    localComponents.AddComponent(entity, new Local());
                 }
             }
 
@@ -371,7 +403,11 @@ namespace DefaultNamespace
             {
                 if (entity % 4 == 0)
                 {
-                    registry.AddComponent(entity, new Remote());
+                    // fast, but with closure, could be moved to static / preallocated context
+                    remoteComponents.AddComponent(entity, new Remote());
+                    
+                    //slow
+                    //registry.AddComponent(entity, new Remote());
                 }
             });
 
@@ -382,20 +418,27 @@ namespace DefaultNamespace
         public static void AddNewComponentWith2DenseComponents(int entitiesCount, Stopwatch stopwatch, ref BenchmarkResult result)
         {
             var world = new Registry();
+            var localComponents = world.GetComponents<Local>();
+            var remoteComponents = world.GetComponents<Remote>();
+            var healthComponents = world.GetComponents<Health>();
 
             for (int i = 0; i < entitiesCount; i++)
             {
                 var entity = world.CreateEntity();
 
-                world.AddComponent(entity, new Local());
-                world.AddComponent(entity, new Remote());
+                localComponents.AddComponent(entity, new Local());
+                remoteComponents.AddComponent(entity, new Remote());
             }
 
             stopwatch.Restart();
 
             world.EachWithEntity((Registry registry, int entity, ref Local local, ref Remote remote) =>
             {
-                registry.AddComponent(entity, new Health());
+                // fast, but with closure, could be moved to static / preallocated context
+                healthComponents.AddComponent(entity, new Health());
+                
+                //slow
+                //registry.AddComponent(entity, new Health());
             });
 
             stopwatch.Stop();
@@ -405,6 +448,9 @@ namespace DefaultNamespace
         public static void AddNewComponentWith2SparseComponents(int entitiesCount, Stopwatch stopwatch, ref BenchmarkResult result)
         {
             var world = new Registry();
+            var localComponents = world.GetComponents<Local>();
+            var remoteComponents = world.GetComponents<Remote>();
+            var healthComponents = world.GetComponents<Health>();
 
             for (int i = 0; i < entitiesCount; i++)
             {
@@ -412,12 +458,12 @@ namespace DefaultNamespace
 
                 if (i % 2 == 0)
                 {
-                    world.AddComponent(entity, new Local());
+                    localComponents.AddComponent(entity, new Local());
                 }
 
                 if (i % 4 == 0)
                 {
-                    world.AddComponent(entity, new Remote());
+                    remoteComponents.AddComponent(entity, new Remote());
                 }
             }
 
@@ -427,7 +473,11 @@ namespace DefaultNamespace
             {
                 if (entity % 8 == 0)
                 {
-                    registry.AddComponent(entity, new Health());
+                    // fast, but with closure, could be moved to static / preallocated context
+                    healthComponents.AddComponent(entity, new Health());
+                    
+                    // slow
+                    //registry.AddComponent(entity, new Health());
                 }
             });
 
@@ -438,21 +488,29 @@ namespace DefaultNamespace
         public static void AddNewComponentWith3DenseComponents(int entitiesCount, Stopwatch stopwatch, ref BenchmarkResult result)
         {
             var world = new Registry();
+            var localComponents = world.GetComponents<Local>();
+            var remoteComponents = world.GetComponents<Remote>();
+            var healthComponents = world.GetComponents<Health>();
+            var velocityComponents = world.GetComponents<Velocity>();
             
             for (int i = 0; i < entitiesCount; i++)
             {
                 var entity = world.CreateEntity();
 
-                world.AddComponent(entity, new Local());
-                world.AddComponent(entity, new Remote());
-                world.AddComponent(entity, new Health());
+                localComponents.AddComponent(entity, new Local());
+                remoteComponents.AddComponent(entity, new Remote());
+                healthComponents.AddComponent(entity, new Health());
             }
 
             stopwatch.Restart();
 
             world.EachWithEntity((Registry registry, int entity, ref Local local, ref Remote remote, ref Health health) =>
             {
-                registry.AddComponent(entity, new Velocity());
+                // fast, but with closure, could be moved to static / preallocated context
+                velocityComponents.AddComponent(entity, new Velocity());
+                
+                //slow
+                //registry.AddComponent(entity, new Velocity());
             });
 
             stopwatch.Stop();
@@ -462,6 +520,10 @@ namespace DefaultNamespace
         public static void AddNewComponentWith3SparseComponents(int entitiesCount, Stopwatch stopwatch, ref BenchmarkResult result)
         {
             var world = new Registry();
+            var localComponents = world.GetComponents<Local>();
+            var remoteComponents = world.GetComponents<Remote>();
+            var healthComponents = world.GetComponents<Health>();
+            var velocityComponents = world.GetComponents<Velocity>();
             
             for (var i = 0; i < entitiesCount; i++)
             {
@@ -469,17 +531,17 @@ namespace DefaultNamespace
 
                 if (i % 2 == 0)
                 {
-                    world.AddComponent(entity, new Local());
+                    localComponents.AddComponent(entity, new Local());
                 }
 
                 if (i % 4 == 0)
                 {
-                    world.AddComponent(entity, new Remote());
+                    remoteComponents.AddComponent(entity, new Remote());
                 }
 
                 if (i % 8 == 0)
                 {
-                    world.AddComponent(entity, new Health());
+                    healthComponents.AddComponent(entity, new Health());
                 }
             }
             
@@ -489,7 +551,11 @@ namespace DefaultNamespace
             {
                 if (entity % 16 == 0)
                 {
-                    registry.AddComponent(entity, new Velocity());
+                    // fast, but with closure, could be moved to static / preallocated context
+                    velocityComponents.AddComponent(entity, new Velocity());
+                    
+                    // slow
+                    //registry.AddComponent(entity, new Velocity());
                 }
             });
 
@@ -500,12 +566,13 @@ namespace DefaultNamespace
         public static void IterateWith1DenseComponents(int entitiesCount, Stopwatch stopwatch, ref BenchmarkResult result)
         {
             var world = new Registry();
+            var localComponents = world.GetComponents<Local>();
 
             for (int i = 0; i < entitiesCount; i++)
             {
                 var entity = world.CreateEntity();
 
-                world.AddComponent(entity, new Local());
+                localComponents.AddComponent(entity, new Local());
             }
             
             stopwatch.Restart();
@@ -522,6 +589,7 @@ namespace DefaultNamespace
         public static void IterateWith1SparseComponents(int entitiesCount, Stopwatch stopwatch, ref BenchmarkResult result)
         {
             var world = new Registry();
+            var localComponents = world.GetComponents<Local>();
 
             for (int i = 0; i < entitiesCount; i++)
             {
@@ -529,7 +597,7 @@ namespace DefaultNamespace
 
                 if (i % 2 == 0)
                 {
-                    world.AddComponent(entity, new Local());
+                    localComponents.AddComponent(entity, new Local());
                 }
             }
 
@@ -547,13 +615,15 @@ namespace DefaultNamespace
         public static void IterateWith2DenseComponents(int entitiesCount, Stopwatch stopwatch, ref BenchmarkResult result)
         {
             var world = new Registry();
+            var localComponents = world.GetComponents<Local>();
+            var remoteComponents = world.GetComponents<Remote>();
 
             for (int i = 0; i < entitiesCount; i++)
             {
                 var entity = world.CreateEntity();
 
-                world.AddComponent(entity, new Local());
-                world.AddComponent(entity, new Remote());
+                localComponents.AddComponent(entity, new Local());
+                remoteComponents.AddComponent(entity, new Remote());
             }
             
             stopwatch.Restart();
@@ -571,6 +641,8 @@ namespace DefaultNamespace
         public static void IterateWith2SparseComponents(int entitiesCount, Stopwatch stopwatch, ref BenchmarkResult result)
         {
             var world = new Registry();
+            var localComponents = world.GetComponents<Local>();
+            var remoteComponents = world.GetComponents<Remote>();
             
             for (int i = 0; i < entitiesCount; i++)
             {
@@ -578,12 +650,12 @@ namespace DefaultNamespace
 
                 if (i % 2 == 0)
                 {
-                    world.AddComponent(entity, new Local());
+                    localComponents.AddComponent(entity, new Local());
                 }
 
                 if (i % 4 == 0)
                 {
-                    world.AddComponent(entity, new Remote());
+                    remoteComponents.AddComponent(entity, new Remote());
                 }
             }
             
@@ -602,14 +674,17 @@ namespace DefaultNamespace
         public static void IterateWith3DenseComponents(int entitiesCount, Stopwatch stopwatch, ref BenchmarkResult result)
         {
             var world = new Registry();
+            var localComponents = world.GetComponents<Local>();
+            var remoteComponents = world.GetComponents<Remote>();
+            var healthComponents = world.GetComponents<Health>();
 
             for (int i = 0; i < entitiesCount; i++)
             {
                 var entity = world.CreateEntity();
 
-                world.AddComponent(entity, new Local());
-                world.AddComponent(entity, new Remote());
-                world.AddComponent(entity, new Health());
+                localComponents.AddComponent(entity, new Local());
+                remoteComponents.AddComponent(entity, new Remote());
+                healthComponents.AddComponent(entity, new Health());
             }
 
             stopwatch.Restart();
@@ -628,6 +703,9 @@ namespace DefaultNamespace
         public static void IterateWith3SparseComponents(int entitiesCount, Stopwatch stopwatch, ref BenchmarkResult result)
         {
             var world = new Registry();
+            var localComponents = world.GetComponents<Local>();
+            var remoteComponents = world.GetComponents<Remote>();
+            var healthComponents = world.GetComponents<Health>();
 
             for (var i = 0; i < entitiesCount; i++)
             {
@@ -635,17 +713,17 @@ namespace DefaultNamespace
 
                 if (i % 2 == 0)
                 {
-                    world.AddComponent(entity, new Local());
+                    localComponents.AddComponent(entity, new Local());
                 }
 
                 if (i % 4 == 0)
                 {
-                    world.AddComponent(entity, new Remote());
+                    remoteComponents.AddComponent(entity, new Remote());
                 }
 
                 if (i % 8 == 0)
                 {
-                    world.AddComponent(entity, new Health());
+                    healthComponents.AddComponent(entity, new Health());
                 }
             }
 

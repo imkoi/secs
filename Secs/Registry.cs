@@ -155,7 +155,9 @@ namespace Secs
                 
             var newComponents = new ComponentsRegistry
             {
-                _sparse = new int[_lastEntityId],
+                _sparse = new int[_lastEntityId == 0
+                    ? 1 
+                    : _lastEntityId],
                 _entities = new int[32],
                 _components = array,
                 _size = sizeof(T)
