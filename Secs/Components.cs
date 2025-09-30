@@ -127,5 +127,10 @@ namespace Secs
             
             return ref ((T*) components._componentsPtr)[components._sparse[entity]];
         }
+
+        public bool HasComponent(int entity)
+        {
+            return _registry._components[_id]._sparse[entity] != 0;
+        }
     }
 }

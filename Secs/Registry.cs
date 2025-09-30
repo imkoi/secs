@@ -139,6 +139,16 @@ namespace Secs
             
             return ref components.GetDense<T>()[components._sparse[entity]];
         }
+        
+        public bool HasComponent<T>(int entity)
+        {
+            if (_componentIds.TryGetValue(typeof(T), out var id))
+            {
+                return _components[id]._sparse[entity] != 0;
+            }
+
+            return false;
+        }
 
         private unsafe void RegisterComponent<T>(Type componentType, out int id) where T : struct
         {
