@@ -60,6 +60,7 @@ namespace Unity.IL2CPP.CompilerServices
     ///     }
     /// </summary>
     [AttributeUsage(AttributeTargets.Assembly | AttributeTargets.Struct | AttributeTargets.Class | AttributeTargets.Method | AttributeTargets.Property | AttributeTargets.Delegate, Inherited = false, AllowMultiple = true)]
+    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public class Il2CppSetOptionAttribute : Attribute
     {
         public Option Option { get; private set; }

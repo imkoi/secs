@@ -111,7 +111,7 @@ namespace Secs
                     MoveNextComponent:
                     if (match && componentIndex < finalFilterCount)
                     {
-                        match = sparses[componentIndex][entity] > 0 == componentIndex < includesCount;
+                        match = (entity < sparses[componentIndex].Length && sparses[componentIndex][entity] > 0) == componentIndex < includesCount;
                         
                         componentIndex++;
                         goto MoveNextComponent;
@@ -125,7 +125,9 @@ namespace Secs
                         goto MoveNextEntity;
                     }
                 }
-                
+
+                if (!match) entity = -1;
+
                 _entityIndex = entityIndex;
                 
                 _current._entity = entity;
@@ -277,7 +279,7 @@ namespace Secs
                     MoveNextComponent:
                     if (match && componentIndex < finalFilterCount)
                     {
-                        match = sparses[componentIndex][entity] > 0 == componentIndex < includesCount;
+                        match = (entity < sparses[componentIndex].Length && sparses[componentIndex][entity] > 0) == componentIndex < includesCount;
                         
                         componentIndex++;
                         goto MoveNextComponent;
@@ -291,7 +293,9 @@ namespace Secs
                         goto MoveNextEntity;
                     }
                 }
-                
+
+                if (!match) entity = -1;
+
                 _entityIndex = entityIndex;
                 
                 
@@ -452,7 +456,7 @@ namespace Secs
                     MoveNextComponent:
                     if (match && componentIndex < finalFilterCount)
                     {
-                        match = sparses[componentIndex][entity] > 0 == componentIndex < includesCount;
+                        match = (entity < sparses[componentIndex].Length && sparses[componentIndex][entity] > 0) == componentIndex < includesCount;
                         
                         componentIndex++;
                         goto MoveNextComponent;
@@ -466,7 +470,9 @@ namespace Secs
                         goto MoveNextEntity;
                     }
                 }
-                
+
+                if (!match) entity = -1;
+
                 _entityIndex = entityIndex;
                 
                 
@@ -637,7 +643,7 @@ namespace Secs
                     MoveNextComponent:
                     if (match && componentIndex < finalFilterCount)
                     {
-                        match = sparses[componentIndex][entity] > 0 == componentIndex < includesCount;
+                        match = (entity < sparses[componentIndex].Length && sparses[componentIndex][entity] > 0) == componentIndex < includesCount;
                         
                         componentIndex++;
                         goto MoveNextComponent;
@@ -651,7 +657,9 @@ namespace Secs
                         goto MoveNextEntity;
                     }
                 }
-                
+
+                if (!match) entity = -1;
+
                 _entityIndex = entityIndex;
                 
                 
@@ -832,7 +840,7 @@ namespace Secs
                     MoveNextComponent:
                     if (match && componentIndex < finalFilterCount)
                     {
-                        match = sparses[componentIndex][entity] > 0 == componentIndex < includesCount;
+                        match = (entity < sparses[componentIndex].Length && sparses[componentIndex][entity] > 0) == componentIndex < includesCount;
                         
                         componentIndex++;
                         goto MoveNextComponent;
@@ -846,7 +854,9 @@ namespace Secs
                         goto MoveNextEntity;
                     }
                 }
-                
+
+                if (!match) entity = -1;
+
                 _entityIndex = entityIndex;
                 
                 
@@ -1037,7 +1047,7 @@ namespace Secs
                     MoveNextComponent:
                     if (match && componentIndex < finalFilterCount)
                     {
-                        match = sparses[componentIndex][entity] > 0 == componentIndex < includesCount;
+                        match = (entity < sparses[componentIndex].Length && sparses[componentIndex][entity] > 0) == componentIndex < includesCount;
                         
                         componentIndex++;
                         goto MoveNextComponent;
@@ -1051,7 +1061,9 @@ namespace Secs
                         goto MoveNextEntity;
                     }
                 }
-                
+
+                if (!match) entity = -1;
+
                 _entityIndex = entityIndex;
                 
                 
@@ -1252,7 +1264,7 @@ namespace Secs
                     MoveNextComponent:
                     if (match && componentIndex < finalFilterCount)
                     {
-                        match = sparses[componentIndex][entity] > 0 == componentIndex < includesCount;
+                        match = (entity < sparses[componentIndex].Length && sparses[componentIndex][entity] > 0) == componentIndex < includesCount;
                         
                         componentIndex++;
                         goto MoveNextComponent;
@@ -1266,7 +1278,9 @@ namespace Secs
                         goto MoveNextEntity;
                     }
                 }
-                
+
+                if (!match) entity = -1;
+
                 _entityIndex = entityIndex;
                 
                 
@@ -1477,7 +1491,7 @@ namespace Secs
                     MoveNextComponent:
                     if (match && componentIndex < finalFilterCount)
                     {
-                        match = sparses[componentIndex][entity] > 0 == componentIndex < includesCount;
+                        match = (entity < sparses[componentIndex].Length && sparses[componentIndex][entity] > 0) == componentIndex < includesCount;
                         
                         componentIndex++;
                         goto MoveNextComponent;
@@ -1491,7 +1505,9 @@ namespace Secs
                         goto MoveNextEntity;
                     }
                 }
-                
+
+                if (!match) entity = -1;
+
                 _entityIndex = entityIndex;
                 
                 

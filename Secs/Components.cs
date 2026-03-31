@@ -54,6 +54,7 @@ namespace Secs
             left = idU < left ? idU : left;
 
             entityInfos[entityId] =
+                Registry.AliveBit |
                 ((left & mask) << (2 * bits)) |
                 ((right & mask) << bits) |
                 (count & mask);
@@ -125,7 +126,7 @@ namespace Secs
         {
             var components = _registry._components[_id];
             
-            return ref ((T*) components._componentsPtr)[components._sparse[entity]];
+            return ref ((T*) components._componentsPtr)[components._sparse[entity] - 1];
         }
 
         public bool HasComponent(int entity)

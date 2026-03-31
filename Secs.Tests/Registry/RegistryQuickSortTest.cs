@@ -1,16 +1,18 @@
-using Secs;
 using FluentAssertions;
 using NUnit.Framework;
+using Secs;
 
-public class QuickSortTest
+namespace Secs.Tests;
+
+public class RegistryQuickSortTest
 {
     [Test]
     public unsafe void SortFromMinimumToMaximum()
     {
         var array = stackalloc int[] { 6, 7, 8, 9, 10, 1, 2, 3, 4, 5 };
-        
+
         Registry.QuickSort(array, 0, 9, 1);
-        
+
         array[0].Should().Be(1);
         array[1].Should().Be(2);
         array[2].Should().Be(3);
@@ -22,14 +24,14 @@ public class QuickSortTest
         array[8].Should().Be(9);
         array[9].Should().Be(10);
     }
-    
+
     [Test]
     public unsafe void SortFromMaximumToMinimum()
     {
         var array = stackalloc int[] { 6, 7, 8, 9, 10, 1, 2, 3, 4, 5 };
-        
+
         Registry.QuickSort(array, 0, 9, -1);
-        
+
         array[0].Should().Be(10);
         array[1].Should().Be(9);
         array[2].Should().Be(8);
@@ -41,14 +43,14 @@ public class QuickSortTest
         array[8].Should().Be(2);
         array[9].Should().Be(1);
     }
-    
+
     [Test]
     public unsafe void SortCorrectSpan()
     {
         var array = stackalloc int[] { 6, 7, 8, 9, 10, 1, 2, 3, 4, 5 };
-        
+
         Registry.QuickSort(array, 0, 4, -1);
-        
+
         array[0].Should().Be(10);
         array[1].Should().Be(9);
         array[2].Should().Be(8);

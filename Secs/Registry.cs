@@ -17,25 +17,28 @@ namespace Secs
         internal ComponentsRegistry[] _components = new ComponentsRegistry[32];
         private int _componentCount;
 
+        internal const long AliveBit = 1L << 60;
+
         public int CreateEntity()
         {
-            var entityId = _destroyedEntities.Count == 0 
-                ? _lastEntityId++ 
+            var entityId = _destroyedEntities.Count == 0
+                ? _lastEntityId++
                 : _destroyedEntities.Dequeue();
 
             if (_entityInfos.Length <= entityId)
             {
                 Array.Resize(ref _entityInfos, entityId * 2);
             }
-            
+
             const int bits = 20;
             const long mask = (1L << bits) - 1;
 
             _entityInfos[entityId] =
+                AliveBit |
                 ((-1L & mask) << (2 * bits)) |
                 ((-1L & mask) << bits) |
                 (0L & mask);
-            
+
             return entityId;
         }
         
@@ -46,7 +49,17 @@ namespace Secs
 
             var entityInfo = _entityInfos[entity];
 
+            if ((entityInfo & AliveBit) == 0) return;
+
             var componentsCount = (int)(entityInfo & mask);
+
+            if (componentsCount == 0)
+            {
+                _entityInfos[entity] = entityInfo & ~AliveBit;
+                _destroyedEntities.Enqueue(entity);
+                return;
+            }
+
             var right = (int)((entityInfo >> bits) & mask);
             var left = (int)((entityInfo >> (2 * bits)) & mask);
 
@@ -54,8 +67,6 @@ namespace Secs
             {
                 componentsCount -= RemoveComponent(entity, i);
             }
-
-            _destroyedEntities.Enqueue(entity);
         }
 
         public Components<T> GetComponents<T>() where T : struct
@@ -117,6 +128,7 @@ namespace Secs
             left = idU < left ? idU : left;
 
             _entityInfos[entityId] =
+                AliveBit |
                 ((left & mask) << (2 * bits)) |
                 ((right & mask) << bits) |
                 (count & mask);
@@ -137,7 +149,7 @@ namespace Secs
             _componentIds.TryGetValue(typeof(T), out var id);
             var components = _components[id];
             
-            return ref components.GetDense<T>()[components._sparse[entity]];
+            return ref components.GetDense<T>()[components._sparse[entity] - 1];
         }
         
         public bool HasComponent<T>(int entity)
@@ -200,7 +212,7 @@ namespace Secs
         {
             ref var components = ref _components[componentId];
             var sparse = components._sparse;
-            var denseIndex = sparse[entity] - 1;
+            var denseIndex = entity < sparse.Length ? sparse[entity] - 1 : -1;
 
             if (denseIndex < 0)
             {
